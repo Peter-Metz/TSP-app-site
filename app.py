@@ -25,9 +25,9 @@ def make_fig(income=30000, nom_rate=0.03, contrib=0.03, match=0.03, leakage=0.4)
         x=list(range(0, 41)),
         y=wealth,
         width=0.8,
-        marker_color="#75A074",
+        marker_color="white",
         opacity=0.85,
-        hoverlabel = dict(font=dict(color='white')),
+        # hoverlabel = dict(font=dict(color='white')),
         hovertemplate="Year %{x}<br>" + "New Savings: $%{y:,.0f}<extra></extra>",
     )
 
@@ -36,12 +36,16 @@ def make_fig(income=30000, nom_rate=0.03, contrib=0.03, match=0.03, leakage=0.4)
     layout = go.Layout(
         yaxis_title="New Savings",
         xaxis_title="Years Since First Investment",
-        plot_bgcolor="white",
+        yaxis = {'showgrid':False},
         font={"family": "Lato"},
+        font_color="white",
         margin={"t": 50, "b": 30},
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)'
     )
     fig = go.Figure(data=trace, layout=layout)
     fig.update_yaxes(range=[0, axis_max])
+
 
     fig.update_layout(
         yaxis_tickprefix="$",
@@ -68,7 +72,7 @@ widgets = dbc.Col(
                     style={
                         "margin-left": "5%",
                         "margin-right": "5%",
-                        "color": "#75A074",
+                        "color": "white",
                     },
                 ),
                 dbc.Label(
@@ -110,7 +114,7 @@ widgets = dbc.Col(
                     """
                     #### Earner Characteristics
                     """,
-                    style={"margin-left": "5%", "margin-top": 20, "color": "#75A074"},
+                    style={"margin-left": "5%", "margin-top": 20, "color": "white"},
                 ),
                 dbc.FormGroup(
                     [
@@ -230,7 +234,7 @@ widgets = dbc.Col(
                     """
                     #### Market Performance
                     """,
-                    style={"margin-left": "5%", "margin-top": 20, "color": "#75A074"},
+                    style={"margin-left": "5%", "margin-top": 20, "color": "white"},
                 ),
                 dbc.Label(
                     "Average Annual Investment Returns",
@@ -282,7 +286,7 @@ app.layout = dbc.Container(
                     ## Interactive Tool: Building Wealth with a Federal Savings Match
                     """,
                             style={
-                                "color": "#75A074",
+                                "color": "white",
                                 "margin-left": "5%",
                                 "padding-right": "5%",
                                 "padding-top": "3%",
@@ -311,7 +315,7 @@ app.layout = dbc.Container(
                                     """
                                     #### Results
                                     """,
-                                    style={"color": "#75A074"},
+                                    style={"color": "white"},
                                 ),
                                 dbc.Label(
                                     "",
@@ -330,7 +334,8 @@ app.layout = dbc.Container(
                             ],
                             style={"margin-left": "5%", "padding-right": "5%"},
                         ),
-                    ]
+                    ],
+                    style={"color": "#e3e3e3", "background-color": "#75A074"},
                 ),
             ],
             align="center",
@@ -338,7 +343,7 @@ app.layout = dbc.Container(
         ),
     ],
     fluid=True,
-    style={"background-color": "#EAEAEA", "height": "100%"},
+    style={"background-color": "#75A074", "height": "100%"},
 )
 
 
