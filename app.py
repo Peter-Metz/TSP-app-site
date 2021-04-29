@@ -25,7 +25,7 @@ def make_fig(income=30000, nom_rate=0.03, contrib=0.03, match=0.03, leakage=0.4)
         x=list(range(0, 41)),
         y=wealth,
         width=0.8,
-        marker_color="white",
+        marker_color="#fffde1",
         opacity=0.85,
         # hoverlabel = dict(font=dict(color='white')),
         hovertemplate="Year %{x}<br>" + "New Savings: $%{y:,.0f}<extra></extra>",
@@ -38,7 +38,7 @@ def make_fig(income=30000, nom_rate=0.03, contrib=0.03, match=0.03, leakage=0.4)
         xaxis_title="Years Since First Investment",
         yaxis = {'showgrid':False},
         font={"family": "Lato"},
-        font_color="white",
+        font_color="#fffde1",
         margin={"t": 50, "b": 30},
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)'
@@ -72,7 +72,7 @@ widgets = dbc.Col(
                     style={
                         "margin-left": "5%",
                         "margin-right": "5%",
-                        "color": "white",
+                        "color": "#fffde1",
                     },
                 ),
                 dbc.Label(
@@ -114,7 +114,7 @@ widgets = dbc.Col(
                     """
                     #### Earner Characteristics
                     """,
-                    style={"margin-left": "5%", "margin-top": 20, "color": "white"},
+                    style={"margin-left": "5%", "margin-top": 20, "color": "#fffde1"},
                 ),
                 dbc.FormGroup(
                     [
@@ -234,7 +234,7 @@ widgets = dbc.Col(
                     """
                     #### Market Performance
                     """,
-                    style={"margin-left": "5%", "margin-top": 20, "color": "white"},
+                    style={"margin-left": "5%", "margin-top": 20, "color": "#fffde1"},
                 ),
                 dbc.Label(
                     "Average Annual Investment Returns",
@@ -286,7 +286,7 @@ app.layout = dbc.Container(
                     ## Interactive Tool: Building Wealth with a Federal Savings Match
                     """,
                             style={
-                                "color": "white",
+                                "color": "#fffde1",
                                 "margin-left": "5%",
                                 "padding-right": "5%",
                                 "padding-top": "3%",
@@ -315,7 +315,7 @@ app.layout = dbc.Container(
                                     """
                                     #### Results
                                     """,
-                                    style={"color": "white"},
+                                    style={"color": "#fffde1"},
                                 ),
                                 dbc.Label(
                                     "",
@@ -335,7 +335,7 @@ app.layout = dbc.Container(
                             style={"margin-left": "5%", "padding-right": "5%"},
                         ),
                     ],
-                    style={"color": "#e3e3e3", "background-color": "#75A074"},
+                    style={"color": "#fffde1", "background-color": "#75A074"},
                 ),
             ],
             align="center",
