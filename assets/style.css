@@ -23,3 +23,7 @@
 .rc-slider-mark-text{
 	color: white;
 }
+
+.card{
+	border: 0 !important;
+}
