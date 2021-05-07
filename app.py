@@ -329,7 +329,7 @@ app.layout = dbc.Container(
                                 dcc.Graph(
                                     id="chart",
                                     config={"displayModeBar": False},
-                                    style={"margin-bottom": "10%"},
+                                    # style={"margin-bottom": "10%"},
                                 ),
                             ],
                             style={"margin-left": "5%", "padding-right": "5%"},
