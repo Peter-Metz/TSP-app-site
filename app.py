@@ -8,7 +8,7 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 
 
-def make_fig(income=30000, nom_rate=0.03, contrib=0.03, match=0.03, leakage=0.4):
+def make_fig(income=52000, nom_rate=0.07, contrib=0.10, match=0.05, leakage=0):
 
     match_amt = min(contrib, match)
 
@@ -22,20 +22,20 @@ def make_fig(income=30000, nom_rate=0.03, contrib=0.03, match=0.03, leakage=0.4)
         wealth.append(assets_year)
 
     trace = go.Bar(
-        x=list(range(0, 41)),
+        x=list(range(2021, 2062)),
         y=wealth,
         width=0.8,
         marker_color="#fffde1",
         opacity=0.85,
         # hoverlabel = dict(font=dict(color='white')),
-        hovertemplate="Year %{x}<br>" + "New Savings: $%{y:,.0f}<extra></extra>",
+        hovertemplate="%{x}<br>" + "New Savings: $%{y:,.0f}<extra></extra>",
     )
 
     axis_max = int(math.ceil(wealth[-1] / 100000)) * 100000
 
     layout = go.Layout(
         yaxis_title="New Savings",
-        xaxis_title="Years Since First Investment",
+        xaxis_title="Year",
         yaxis = {'showgrid':False},
         font={"family": "Lato"},
         font_color="#fffde1",
@@ -86,7 +86,7 @@ widgets = dbc.Col(
                             {"label": "\t4%", "value": 0.04},
                             {"label": "\t5%", "value": 0.05},
                         ],
-                        value=0.03,
+                        value=0.05,
                         labelStyle={"display": "inline-block", "margin-left": "5%"},
                     ),
                 ),
@@ -125,15 +125,15 @@ widgets = dbc.Col(
                         html.Div(
                             dcc.Slider(
                                 id="savings",
-                                value=0.03,
+                                value=0.1,
                                 min=0,
                                 max=0.1,
                                 step=0.01,
                                 marks={
                                     0: "0%",
                                     0.02: "2%",
-                                    0.03: "**",
                                     0.04: "4%",
+                                    0.05: "**",
                                     0.06: "6%",
                                     0.08: "8%",
                                     0.1: "10%",
@@ -167,11 +167,11 @@ widgets = dbc.Col(
                 html.Div(
                     dcc.Slider(
                         id="wages",
-                        value=30000,
+                        value=52000,
                         min=0,
                         max=52000,
                         step=1000,
-                        marks={0: "$0", 30000: "$30,000", 52000: "$52,000"},
+                        marks={0: "$0", 52000: "$52,000"},
                         updatemode="drag",
                     ),
                     style={"width": "70%", "margin-left": "3%"},
@@ -199,7 +199,7 @@ widgets = dbc.Col(
                 html.Div(
                     dcc.Slider(
                         id="leakage",
-                        value=0.4,
+                        value=0,
                         min=0,
                         max=0.4,
                         step=0.1,
@@ -247,7 +247,7 @@ widgets = dbc.Col(
                         {"label": " 5%", "value": 0.05},
                         {"label": " 7%", "value": 0.07},
                     ],
-                    value=0.03,
+                    value=0.07,
                     labelStyle={"display": "inline-block", "margin-left": "5%"},
                 ),
                 dcc.Markdown(
@@ -324,6 +324,7 @@ app.layout = dbc.Container(
                                         "font-style": "italic",
                                         "font-weight": "bold",
                                         "font-size": 16,
+                                        "margin-right": "5%",
                                     },
                                 ),
                                 dcc.Graph(
@@ -370,7 +371,7 @@ def update(match, rate, wages, savings, leakage):
     saving_amt = wages * savings
     wealth_40 = wealth[-1]
 
-    summary = "After 40 years of participation in a federal savings match program, assets \
+    summary = "By 2061, after 40 years of participation in a federal savings match program, assets \
     grow to ${:0,.0f}, before taxes and fees.".format(
         wealth_40
     )
