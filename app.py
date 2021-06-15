@@ -36,12 +36,13 @@ def make_fig(income=52000, nom_rate=0.07, contrib=0.10, match=0.05, leakage=0):
     layout = go.Layout(
         yaxis_title="New Savings",
         xaxis_title="Year",
-        yaxis = {'showgrid':False},
+        yaxis = {'showgrid':False, 'fixedrange':True},
+        xaxis={'title': 'x-axis','fixedrange':True},
         font={"family": "Lato"},
         font_color="#fffde1",
         margin={"t": 50, "b": 30},
         paper_bgcolor='rgba(0,0,0,0)',
-        plot_bgcolor='rgba(0,0,0,0)'
+        plot_bgcolor='rgba(0,0,0,0)',
     )
     fig = go.Figure(data=trace, layout=layout)
     fig.update_yaxes(range=[0, axis_max])
